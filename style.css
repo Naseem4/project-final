@@ -2,12 +2,11 @@
 /* Modern dark glass look with subtle motion */
 
 :root {
-    --bg: #2a27c05e;
     --panel: rgba(185, 223, 178, 0.04);
     --muted: #fbfbfc;
     --accent1: #270f0f;
-    --accent2: #e20e0e;
-    --glass-border: rgba(255,255,255,0.06);
+    --accent2: #a11818;
+    --glass-border: rgb(67, 21, 21);
     --radius: 14px;
     --container: 1160px;
     --easing: cubic-bezier(.2,.9,.2,1);
@@ -54,7 +53,7 @@ html, body {
     height: 48px
 }
 .logo-img {
-    width: 48px;        /* نفس حجم اللوقو القديم */
+    width: 48px;       
     height: 48px;
     object-fit: contain;
 }
@@ -79,7 +78,7 @@ html, body {
     padding: 10px 12px;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
     min-width: 320px;
     color: inherit
 }
@@ -87,7 +86,6 @@ html, body {
 .btn {
     padding: 15px 10px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.03);
     background: transparent;
     color: inherit;
     cursor: pointer;
@@ -104,13 +102,12 @@ html, body {
     .btn.primary {
         background: linear-gradient(90deg,var(--accent1),var(--accent2));
         color: #061018;
-        box-shadow: 0 12px 34px rgba(255,120,40,0.12);
       
     }
 
     .btn.ghost {
         background: transparent;
-        border: 1px solid rgba(255,255,255,0.04)
+        border: 1px solid rgba(255, 255, 255, 0.04)
     }
 
     .btn.subtle {
@@ -127,7 +124,6 @@ html, body {
     border-radius: 30px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     backdrop-filter: blur(6px);
     min-height: 300px;
     position: relative;
@@ -154,18 +150,18 @@ html, body {
 
 .movie-poster {
     width: 100%;
-    max-width: 400px; /* Maximum width of the image */
-    margin: 20px 0; /* Add space around the image */
-    border-radius: 12px; /* Optional: round the corners of the image */
+    max-width: 400px;
+    margin: 20px 0; 
+    border-radius: 12px; 
     overflow: hidden;
-   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* ظل حول الصورة */
+   box-shadow: 0 8px 20px rgba(222, 149, 149, 0.4); 
     z-index: 2;
 }
 
 .movie-poster img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Ensure image covers the area without distortion */
+    object-fit: cover; 
      opacity: 0.7;
 }
 
@@ -246,7 +242,6 @@ html, body {
     padding: 10px 14px;
     border-radius: 999px;
     background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.02);
     cursor: pointer;
     font-weight: 700;
     color: var(--muted);
@@ -257,10 +252,10 @@ html, body {
     .cat.active {
         background: linear-gradient(90deg,var(--accent1),var(--accent2));
         color: #071018;
-        box-shadow: 0 10px 30px rgba(255,80,80,0.06)
+        box-shadow: 0 10px 30px rgba(60, 28, 28, 0.636)
     }
 
-/* controls */
+
 .container {
     width: 100%
 }
@@ -277,18 +272,18 @@ html, body {
     background: rgba(255,255,255,0.02);
     padding: 8px 12px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.02)
+    border: 1px solid rgba(227, 18, 18, 0.02)
 }
 
 .select select {
     padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid var(--glass-border);
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     color: inherit
 }
 
-/* movies grid */
+
 .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
@@ -298,7 +293,7 @@ html, body {
 .card-movie {
     border-radius: 14px;
     padding: 12px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent);
+    background: linear-gradient(180deg, rgba(8, 103, 227, 0.018), transparent);
     border: 1px solid rgba(255,255,255,0.03);
     display: flex;
     flex-direction: column;
@@ -308,7 +303,7 @@ html, body {
 
     .card-movie:hover {
         transform: translateY(-10px);
-        box-shadow: 0 22px 50px rgba(2,6,23,0.6)
+        box-shadow: 0 22px 50px rgba(82, 40, 40, 0.156)
     }
 
 .poster {
@@ -316,7 +311,7 @@ html, body {
     border-radius: 10px;
     background-size: cover;
     background-position: center;
-    border: 1px solid rgba(255,255,255,0.02)
+    border: 1px solid rgba(67, 64, 64, 0.567)
 }
 
 .movie-title {
@@ -338,7 +333,8 @@ html, body {
     margin-top: auto
 }
 
-/* modal */
+
+/***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***//***/
 .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -418,7 +414,7 @@ html, body {
         border-radius: 8px
     }
 
-/* footer */
+
 .footer {
     display: flex;
     justify-content: space-between;
@@ -429,30 +425,4 @@ html, body {
     margin-top: 24px
 }
 
-/* responsiveness */
-@media (max-width:980px) {
-    .modal-grid {
-        grid-template-columns: 1fr;
-        align-items: start
-    }
 
-    .big-poster {
-        height: 320px
-    }
-
-    .poster {
-        height: 220px
-    }
-
-    .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 22px
-    }
-
-    .hero-aside {
-        flex-direction: row;
-        gap: 12px;
-        align-items: center
-    }
-}
