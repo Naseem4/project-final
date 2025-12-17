@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema Universe | Watch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="watch.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="brand">
+            <div class="logo"></div>
+            <div>
+                <div class="brand-title">CINEMA UNIVERSE</div>
+                <div class="brand-sub">Watch Online</div>
+            </div>
+        </div>
+
+        <!-- <input type="text" id="search" class="search" placeholder="Search movies"> -->
+
+        <div class="nav-actions">
+            <input type="text" id="search" placeholder="Search movies, genres or keyword...">
+
+            <button class="signin-btn">Sign In</button>
+        </div>
+
+        
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-inner">
+            <h1>Watch Movies Anytime</h1>
+            <p>No booking • No tickets • Just watch</p>
+        </div>
+    </header>
+
+    <!-- MOVIES GRID -->
+    <main class="movies-grid" id="moviesGrid">
+        <!-- JS injects movies -->
+    </main>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+        <button id="prevBtn">&lt;</button>
+
+    <div id="pageNumbers"></div>
+
+        <button id="nextBtn">&gt;</button>
+    </div>
+
+<p class="pagination-info" id="paginationInfo"></p>
+
+
+    <footer class="footer">
+        © 2025 Cinema Universe
+    </footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal" style="display:none">
+    <div class="modal-card">
+        <button class="close" id="closeModal">×</button>
+        <h2 id="modalTitle"></h2>
+
+        <video id="videoPlayer" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support video.
+        </video>
+    </div>
+</div>
+
+<script src="watch.js"></script>
+</body>
+</html>
