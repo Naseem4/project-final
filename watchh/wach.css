@@ -2,8 +2,8 @@
     --bg: #05060a;
     --panel: rgba(255,255,255,0.05);
     --muted: #97a6bf;
-    --accent1: #ff6a6a;
-    --accent2: #ffb868;
+   --accent1: #270f0f;
+    --accent2: #a11818;
     --accent-hover: #ff9f40;
     --primary: #4a6cff;
     --dark-input: #111;
@@ -98,7 +98,7 @@ body {
     padding: 10px 18px;
     border-radius: 14px;
     border: none;
-    background-color: #1e3a8a;
+    background-color: #a11818;
     color: white;
     font-weight: bold;
 }
@@ -288,3 +288,58 @@ body {
     font-size: 24px;
     cursor: pointer;
 }
+/* AUTH (Sign In) */
+.auth-card {
+  max-width: 420px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.auth-form label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.auth-form input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: #eaf3ff;
+  outline: none;
+}
+
+.auth-submit {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: #061018;
+}
+
+.auth-error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.auth-hint {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+}
+/* Sign In form layout */
+#authForm {
+    display: flex;
+    flex-direction: column; /* يخليهم تحت بعض */
+    gap: 12px;
+}
+

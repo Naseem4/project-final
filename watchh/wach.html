@@ -15,7 +15,7 @@
     <nav class="nav">
         <div class="brand">
             <div class="logo">
-                <img src ="projectlogo.jpg"alt="ELITE CINEMA LOGO " class="logo-img">
+                <img src="projectlogo.jpg" alt="ELITE CINEMA LOGO" class="logo-img">
             </div>
             <div>
                 <div class="brand-title">CINEMA UNIVERSE</div>
@@ -23,15 +23,10 @@
             </div>
         </div>
 
-        <!-- <input type="text" id="search" class="search" placeholder="Search movies"> -->
-
         <div class="nav-actions">
             <input type="text" id="search" placeholder="Search movies, genres or keyword...">
-
             <button class="signin-btn">Sign In</button>
         </div>
-
-        
     </nav>
 
     <!-- HERO -->
@@ -41,16 +36,17 @@
             <p>No booking • No tickets • Just watch</p>
         </div>
     </header>
+
     <!-- CATEGORIES -->
-        <section class="categories" aria-label="Categories">
-            <button class="cat active" data-genre="">All</button>
-            <button class="cat" data-genre="Action">Action</button>
-            <button class="cat" data-genre="Drama">Drama</button>
-            <button class="cat" data-genre="Comedy">Comedy</button>
-            <button class="cat" data-genre="Sci-Fi">Sci-Fi</button>
-            <button class="cat" data-genre="Horror">Horror</button>
-            <button class="cat" data-genre="Romance">Romance</button>
-        </section>
+    <section class="categories" aria-label="Categories">
+        <button class="cat active" data-genre="">All</button>
+        <button class="cat" data-genre="Action">Action</button>
+        <button class="cat" data-genre="Drama">Drama</button>
+        <button class="cat" data-genre="Comedy">Comedy</button>
+        <button class="cat" data-genre="Sci-Fi">Sci-Fi</button>
+        <button class="cat" data-genre="Horror">Horror</button>
+        <button class="cat" data-genre="Romance">Romance</button>
+    </section>
 
     <!-- MOVIES GRID -->
     <main class="movies-grid" id="moviesGrid">
@@ -60,14 +56,11 @@
     <!-- PAGINATION -->
     <div class="pagination">
         <button id="prevBtn">&lt;</button>
-
-    <div id="pageNumbers"></div>
-
+        <div id="pageNumbers"></div>
         <button id="nextBtn">&gt;</button>
     </div>
 
-<p class="pagination-info" id="paginationInfo"></p>
-
+    <p class="pagination-info" id="paginationInfo"></p>
 
     <footer class="footer">
         © 2025 Cinema Universe
@@ -75,7 +68,7 @@
 
 </div>
 
-<!-- MODAL -->
+<!-- MOVIE MODAL -->
 <div class="modal-backdrop" id="modal" style="display:none">
     <div class="modal-card">
         <button class="close" id="closeModal">×</button>
@@ -88,6 +81,44 @@
     </div>
 </div>
 
+<!-- ================= SIGN IN MODAL (ADDED) ================= -->
+<div class="modal-backdrop" id="authModal" style="display:none;">
+    <div class="modal-card" style="max-width:420px;">
+        <button class="close" id="closeAuth">×</button>
+
+        <h2>Sign In</h2>
+
+        <form id="authForm">
+            <input
+                type="email"
+                id="authEmail"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="authPassword"
+                placeholder="Password"
+                required
+            >
+
+            <p id="authError" style="display:none; color:#ff6b6b; font-size:13px;">
+                Wrong email or password
+            </p>
+
+            <button type="submit" class="signin-btn" style="width:100%; margin-top:10px;">
+                Login
+            </button>
+
+            <p style="font-size:12px; color:#9aa8b6; margin-top:8px;">
+                Demo: admin@cinema.com / 1234
+            </p>
+        </form>
+    </div>
+</div>
+<!-- ======================================================== -->
+
 <script src="wach.js"></script>
 </body>
-</html>  
+</html>

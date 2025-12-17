@@ -99,6 +99,89 @@ const modalTitle = document.getElementById("modalTitle");
 const videoPlayer = document.getElementById("videoPlayer");
 const closeModal = document.getElementById("closeModal");
 const search = document.getElementById("search");
+// -------------------------
+// AUTH (Sign In)
+// -------------------------
+const signinBtn = document.querySelector(".signin-btn");
+const authModal = document.getElementById("authModal");
+const closeAuth = document.getElementById("closeAuth");
+const authForm = document.getElementById("authForm");
+const authEmail = document.getElementById("authEmail");
+const authPassword = document.getElementById("authPassword");
+const authError = document.getElementById("authError");
+
+function getUser() {
+  const raw = localStorage.getItem("cuUser");
+  return raw ? JSON.parse(raw) : null;
+}
+
+function setUser(user) {
+  localStorage.setItem("cuUser", JSON.stringify(user));
+  updateAuthUI();
+}
+
+function clearUser() {
+  localStorage.removeItem("cuUser");
+  updateAuthUI();
+}
+
+function openAuthModal() {
+  authError.style.display = "none";
+  authError.textContent = "";
+  authPassword.value = "";
+  authModal.style.display = "flex";
+  authEmail.focus();
+}
+
+function closeAuthModal() {
+  authModal.style.display = "none";
+}
+
+function updateAuthUI() {
+  const user = getUser();
+  if (user) {
+    signinBtn.textContent = `Hi, ${user.name} (Logout)`;
+  } else {
+    signinBtn.textContent = "Sign In";
+  }
+}
+
+// click Sign In / Logout
+signinBtn.addEventListener("click", () => {
+  const user = getUser();
+  if (user) {
+    clearUser(); // logout
+  } else {
+    openAuthModal();
+  }
+});
+
+closeAuth.addEventListener("click", closeAuthModal);
+
+// submit login
+authForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const email = authEmail.value.trim().toLowerCase();
+  const pass = authPassword.value.trim();
+
+  // Demo validation (واضحة للمناقشة)
+  const isValid = (email === "admin@cinema.com" && pass === "1234");
+
+  if (!isValid) {
+    authError.textContent = "Wrong email or password (try demo account).";
+    authError.style.display = "block";
+    return;
+  }
+
+  const name = "Admin";
+  setUser({ email, name });
+  closeAuthModal();
+});
+
+// run once on load
+updateAuthUI();
+
 
 // -------------------------
 // دالة عرض الأفلام
