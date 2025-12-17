@@ -1,0 +1,241 @@
+:root {
+    --bg: #05060a;
+    --panel: rgba(255,255,255,0.05);
+    --muted: #97a6bf;
+    --accent1: #ff6a6a;
+    --accent2: #ffb868;
+    font-family: Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: #eaf3ff;
+}
+
+.app {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.brand {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: #ff6a6a;
+    border-radius: 8px;
+}
+
+
+.brand-title {
+    font-weight: bold;
+}
+
+.brand-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.search {
+     padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+   background-color: rgba(255, 255, 255, 0.02);
+
+    min-width: 320px;
+    color: inherit;
+}
+
+
+
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#search {
+    width: 280px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: none;
+    background-color: #111;
+    color: white;
+}
+
+#search::placeholder {
+    color: #888;
+}
+
+.signin-btn {
+    padding: 10px 18px;
+    border-radius: 14px;
+    border: none;
+    background-color: #1e3a8a;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* HERO */
+.hero {
+    background-color: var(--panel);
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    text-align: center;   /* توسيط النص */
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column;   /* العناصر تحت بعض */
+    align-items: center;      /* توسيط أفقي */
+    justify-content: center;  /* توسيط عمودي */
+}
+
+.hero h1 {
+    margin: 0;
+}
+
+.hero p {
+    color: var(--muted);
+}
+
+/* MOVIES GRID */
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+
+
+.movie-card {
+    background-color: var(--panel);
+    padding: 10px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 23px;
+    gap: 10px;
+    
+}
+
+.poster {
+    height: 280px;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.movie-title {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.movie-actions button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 800;
+    background-color: #ffb868;
+    color: #061018;
+}
+
+.movie-actions button:hover {
+    background-color: #ff9f40;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    gap: 10px;
+}
+
+.pagination button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+
+.pagination button.active {
+    background-color: #4a6cff;
+    color: white;
+}
+
+#pageNumbers {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--muted);
+}
+
+/* MODAL */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card {
+    background-color: #0e1125;
+    padding: 20px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.modal-card video {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}

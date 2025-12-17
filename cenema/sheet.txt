@@ -1,0 +1,9 @@
+a web page for ticket reservation for a cinema and an olnine site to watch free movies online
+(can't watch movies you reserve a ticket for on the site only specific movies)
+
+purpose screen1: to show the movies that'll be casted this week and to choose wich kind of movies you wanna watch
+and search for a movie to see if it's being casted this week
+
+purpose screen2: to watch movies online for free and choose the kind of movie you'd like
+
+
