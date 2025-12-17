@@ -56,10 +56,7 @@ const titles = [
 ];
 
 // إنشاء قائمة الأفلام
-// const movies = [];
-// for (let i = 0; i < titles.length; i++) {
-//     movies.push({ id: i + 1, title: titles[i], video: `movie${i + 1}.mp4`, genres: ["Action","Drama","Comedy","Horror"] });
-// }
+
 
 const movies = [];
 
@@ -210,37 +207,90 @@ function renderMovies(list) {
 const itemsPerPage = 12;
 let currentPage = 1;
 
+
+
 function paginateMovies() {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginated = movies.slice(start, end);
+
+    const paginated = filteredMovies.slice(start, end);
     renderMovies(paginated);
     renderPagination();
 }
 
+
 function renderPagination() {
     const pageNumbers = document.getElementById("pageNumbers");
     const paginationInfo = document.getElementById("paginationInfo");
+
     pageNumbers.innerHTML = "";
-    const totalPages = Math.ceil(movies.length / itemsPerPage);
-    let startPage = Math.max(1, currentPage);
-    let endPage = Math.min(totalPages, startPage + 2);
-    if (endPage - startPage < 2) startPage = Math.max(1, endPage - 2);
-    for (let i = startPage; i <= endPage; i++) {
+
+    const totalPages = Math.ceil(filteredMovies.length / itemsPerPage);
+
+    const startItem = (currentPage - 1) * itemsPerPage + 1;
+    const endItem = Math.min(currentPage * itemsPerPage, filteredMovies.length);
+
+    paginationInfo.textContent =
+        `${startItem} - ${endItem} of ${filteredMovies.length} movies`;
+
+    if (totalPages <= 1) {
         const btn = document.createElement("button");
-        btn.textContent = i;
-        if (i === currentPage) btn.classList.add("active");
-        btn.addEventListener("click", () => {
-            currentPage = i;
-            paginateMovies();
-        });
+        btn.textContent = 1;
+        btn.classList.add("active");
         pageNumbers.appendChild(btn);
+        return;
     }
-    paginationInfo.textContent = `${startIndex() + 1} - ${endIndex()} of ${movies.length} movies`;
+
+    const activeCat = document.querySelector(".cat.active");
+    const isAll = activeCat && activeCat.getAttribute("data-genre") === "";
+
+    // =========================
+    // ALL → 3 أرقام متحركة
+    // =========================
+    if (isAll) {
+        let startPage = Math.max(1, currentPage - 1);
+        let endPage = Math.min(totalPages, startPage + 2);
+
+        if (endPage - startPage < 2) {
+            startPage = Math.max(1, endPage - 2);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const btn = document.createElement("button");
+            btn.textContent = i;
+
+            if (i === currentPage) btn.classList.add("active");
+
+            btn.addEventListener("click", () => {
+                currentPage = i;
+                paginateMovies();
+            });
+
+            pageNumbers.appendChild(btn);
+        }
+    }
+    // =========================
+    // باقي التصنيفات → كل الصفحات
+    // =========================
+    else {
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement("button");
+            btn.textContent = i;
+
+            if (i === currentPage) btn.classList.add("active");
+
+            btn.addEventListener("click", () => {
+                currentPage = i;
+                paginateMovies();
+            });
+
+            pageNumbers.appendChild(btn);
+        }
+    }
 }
 
-function startIndex() { return (currentPage - 1) * itemsPerPage; }
-function endIndex() { return Math.min(currentPage * itemsPerPage, movies.length); }
+
+
 
 // -------------------------
 // فتح المودال عند الضغط على Watch
@@ -274,50 +324,49 @@ search.addEventListener("input", () => {
 document.getElementById("prevBtn").addEventListener("click", () => {
     if (currentPage > 1) { currentPage--; paginateMovies(); }
 });
+
+
 document.getElementById("nextBtn").addEventListener("click", () => {
-    const totalPages = Math.ceil(movies.length / itemsPerPage);
-    if (currentPage < totalPages) { currentPage++; paginateMovies(); }
+    const totalPages = Math.ceil(filteredMovies.length / itemsPerPage);
+
+    if (currentPage < totalPages) {
+        currentPage++;
+        paginateMovies();
+    }
 });
+
 
 // -------------------------
 // Categories click handler
 // -------------------------
-// function applyAndRender() {
-//     const active = document.querySelector('.cat.active');
-//     const genre = active ? active.getAttribute('data-genre') : '';
 
-//     let list = movies.slice();
-//     if (genre) list = list.filter(m => m.genres.includes(genre));
 
-//     const value = search.value.toLowerCase().trim();
-//     if (value) list = list.filter(m => m.title.toLowerCase().includes(value));
-
-//     renderMovies(list);
-// }
 
 function applyAndRender() {
-    const activeBtn = document.querySelector(".cat.active");
-    const selectedGenre = activeBtn.getAttribute("data-genre");
+    const active = document.querySelector(".cat.active");
+    const genre = active.getAttribute("data-genre");
 
-    let filteredMovies = movies;
+    filteredMovies = movies;
 
-    // إذا الزر مش All
-    if (selectedGenre !== "") {
+    // فلترة حسب النوع
+    if (genre !== "") {
         filteredMovies = movies.filter(movie =>
-            movie.genres.includes(selectedGenre)
+            movie.genres.includes(genre)
         );
     }
 
-    // البحث
-    const searchValue = search.value.toLowerCase();
-    if (searchValue) {
+    // فلترة حسب البحث
+    const value = search.value.toLowerCase();
+    if (value) {
         filteredMovies = filteredMovies.filter(movie =>
-            movie.title.toLowerCase().includes(searchValue)
+            movie.title.toLowerCase().includes(value)
         );
     }
 
-    renderMovies(filteredMovies);
+    currentPage = 1; // مهم جداً
+    paginateMovies();
 }
+
 
 
 const cats = document.querySelectorAll(".cat");
@@ -332,4 +381,5 @@ cats.forEach(c => {
 // -------------------------
 // Initial load
 // -------------------------
+filteredMovies = movies;
 paginateMovies();
