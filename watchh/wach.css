@@ -4,6 +4,11 @@
     --muted: #97a6bf;
     --accent1: #ff6a6a;
     --accent2: #ffb868;
+    --accent-hover: #ff9f40;
+    --primary: #4a6cff;
+    --dark-input: #111;
+    --modal-bg: #0e1125;
+    --light-btn: #e0e0e0;
     font-family: Arial, sans-serif;
 }
 
@@ -40,10 +45,17 @@ body {
 .logo {
     width: 40px;
     height: 40px;
-    background-color: #ff6a6a;
+    background-color: var(--accent1);
     border-radius: 8px;
+    
 }
+.logo-img{ 
+    width: 50px;
+    height: 50;
+    margin-bottom: 18px;
+    object-fit: contain;
 
+}
 
 .brand-title {
     font-weight: bold;
@@ -55,17 +67,13 @@ body {
 }
 
 .search {
-     padding: 10px 12px;
+    padding: 10px 12px;
     border-radius: 12px;
-    border: 1px solid var(--glass-border);
-   background-color: rgba(255, 255, 255, 0.02);
-
+    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.02);
     min-width: 320px;
     color: inherit;
 }
-
-
-
 
 .nav-actions {
     display: flex;
@@ -78,7 +86,7 @@ body {
     padding: 10px 14px;
     border-radius: 14px;
     border: none;
-    background-color: #111;
+    background-color: var(--dark-input);
     color: white;
 }
 
@@ -95,21 +103,20 @@ body {
     font-weight: bold;
 }
 
-
 /* HERO */
 .hero {
     background-color: var(--panel);
     padding: 40px;
     border-radius: 16px;
     margin-bottom: 30px;
-    text-align: center;   /* توسيط النص */
+    text-align: center;
 }
 
 .hero-inner {
     display: flex;
-    flex-direction: column;   /* العناصر تحت بعض */
-    align-items: center;      /* توسيط أفقي */
-    justify-content: center;  /* توسيط عمودي */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero h1 {
@@ -120,6 +127,34 @@ body {
     color: var(--muted);
 }
 
+* categories ribbon */
+.categories {
+    display: flex;
+    gap: 12px;
+    padding: 16px 0;
+    overflow: auto;
+    margin: 18px 0
+}
+
+.cat {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--muted);
+    transition: all .16s var(--easing);
+    border : none;
+}
+
+    .cat.active {
+        background: linear-gradient(90deg,var(--accent1),var(--accent2));
+        color: #071018;
+        box-shadow: 0 10px 30px rgba(60, 28, 28, 0.636)
+    }
+
+
 /* MOVIES GRID */
 .movies-grid {
     display: flex;
@@ -128,45 +163,61 @@ body {
     padding: 10px;
 }
 
-
-
-
 .movie-card {
     background-color: var(--panel);
     padding: 10px;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 250px;
     margin-bottom: 23px;
     gap: 10px;
-    
+
+    transition: transform 0.2s;
 }
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
 
 .poster {
     height: 280px;
     background-color: #333;
     border-radius: 10px;
 }
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 
 .movie-title {
     margin: 10px 0;
     font-weight: bold;
 }
 
-.movie-actions button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
+.movie-actions button.watch {
+    background:linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #061018; /* نص أسود */
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 15px 10px;
+    font-weight: 700;
     border: none;
-    font-weight: 800;
-    background-color: #ffb868;
-    color: #061018;
 }
 
-.movie-actions button:hover {
-    background-color: #ff9f40;
+
+.movie-actions button.watch:hover {
+    background-color: #e60000; /* أحمر غامق عند المرور */
 }
+
+
+
+
+/* PAGINATION */
 .pagination {
     display: flex;
     justify-content: center;
@@ -180,12 +231,12 @@ body {
     height: 35px;
     border-radius: 50%;
     border: none;
-    background-color: #e0e0e0;
+    background-color: var(--light-btn);
     font-weight: bold;
 }
 
 .pagination button.active {
-    background-color: #4a6cff;
+    background-color: var(--primary);
     color: white;
 }
 
@@ -199,8 +250,6 @@ body {
     margin-bottom: 20px;
     font-size: 14px;
 }
-
-
 
 /* FOOTER */
 .footer {
@@ -220,7 +269,7 @@ body {
 }
 
 .modal-card {
-    background-color: #0e1125;
+    background-color: var(--modal-bg);
     padding: 20px;
     border-radius: 14px;
     width: 90%;
