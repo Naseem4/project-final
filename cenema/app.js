@@ -1,40 +1,34 @@
-/* app.js � behavior for Premium Cinema UI
-   - renders movie cards
-   - category filter
-   - search + sort
-   - modal with trailer autoplay
-   - booking stub
-*/
+
 
 const movies = [
-    { id: 1, title: 'Shadow City', genres: ['Action', 'Thriller'], length: 134, rating: 'PG-13', lang: 'EN', poster: 'https://source.unsplash.com/800x1200/?movie,poster,night,1', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A high-octane chase across a neon metropolis.' },
-    { id: 2, title: 'Eternal Love', genres: ['Romance', 'Drama'], length: 112, rating: 'PG', lang: 'EN', poster: 'https://source.unsplash.com/800x1200/?romance,poster,2', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A soulful tale of love and second chances.' },
-    { id: 3, title: 'Orbit', genres: ['Sci-Fi'], length: 148, rating: 'PG-13', lang: 'EN', poster: 'https://source.unsplash.com/800x1200/?science,fiction,poster,3', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'Humanity reaches for the stars � and confronts itself.' },
-    { id: 4, title: 'Laugh Track', genres: ['Comedy'], length: 98, rating: 'PG', lang: 'EN', poster: 'https://source.unsplash.com/800x1200/?comedy,poster,4', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A small-town troupe goes viral overnight.' },
-    { id: 5, title: 'Glass Skies', genres: ['Drama', 'Sci-Fi'], length: 130, rating: 'R', lang: 'EN', poster: 'https://source.unsplash.com/800x1200/?city,skyline,poster,5', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A poetic sci-fi about memory and identity.' }
+    { id: 1, title: 'Suits', genres: ['Drama'], length: 134, rating: 'PG-13', lang: 'EN', poster: 'suits.jpg', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A high-octane chase across a neon metropolis.' },
+    { id: 2, title: 'A quit place', genres: ['Horror'], length: 112, rating: 'PG', lang: 'EN', poster: 'quit.png', trailer: 'https://www.youtube.com/embed/p9wE8dyzEJE', desc: 'A soulful tale of love and second chances.' },
+    { id: 3, title: 'Batman The Dark Knight', genres: ['Action', 'Sci-Fi'], length: 148, rating: 'PG-13', lang: 'EN', poster: 'batmaan.jpg', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'Humanity reaches for the stars � and confronts itself.' },
+    { id: 4, title: 'Home alone', genres: ['Action', 'Comedy'], length: 98, rating: 'PG', lang: 'EN', poster: 'homealone.jpg', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A small-town troupe goes viral overnight.' },
+    { id: 5, title: 'John wick', genres: ['Action'], length: 130, rating: 'R', lang: 'EN', poster: 'john.jpg', trailer: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'A poetic sci-fi about memory and identity.' }
 ];
 
-// DOM refs
-const moviesGrid = document.getElementById('moviesGrid');
+// DOM 
+const moviesGrid = document.getElementById('moviesGrid');//تعريف المتغيرات للتخزين
 const cats = Array.from(document.querySelectorAll('.cat'));
 const searchInput = document.getElementById('globalSearch');
 const sortSelect = document.getElementById('sortSelect');
 const resultCount = document.getElementById('resultCount');
 const heroPoster = document.getElementById('heroPoster');
 
-// initial hero poster
-if (movies[0] && heroPoster) heroPoster.style.backgroundImage = `url('${movies[0].poster}')`;
+// hero posters
+if (movies[0] && heroPoster) heroPoster.style.backgroundImage = `url('${movies[0].poster}')`;//لعرض صور الافلام ازا كان موجود خانة للفلم
 
-// utility: render movies
+// Hero
 function renderMovies(list) {
-    moviesGrid.innerHTML = '';
-    resultCount.textContent = list.length;
+    moviesGrid.innerHTML = '';//منفرغ القائمة عشان نعرض بس اسم الفلم اللي بنطبق على النوع (horror /else)
+    resultCount.textContent = list.length;//عدد الافلام اللي طلعت معنا 
     if (!list.length) {
         moviesGrid.innerHTML = `<div class="card" style="padding:24px;">No results found</div>`;
         return;
     }
     list.forEach(m => {
-        const el = document.createElement('article');
+        const el = document.createElement('article');//عملنا element عشان نقدر نغير على ال html
         el.className = 'card-movie';
         el.innerHTML = `
       <div class="poster" style="background-image:url('${m.poster}')" role="img" aria-label="${m.title} poster"></div>
@@ -45,11 +39,11 @@ function renderMovies(list) {
         <button class="btn primary" data-id="${m.id}" data-action="book">Book</button>
       </div>
     `;
-        moviesGrid.appendChild(el);
+        moviesGrid.appendChild(el);// عشان نضيفه على ال moviesgrid
     });
 }
 
-// apply filters: genre, search, sort
+// السيرش و هاي الاشياء
 function getActiveGenre() {
     const active = document.querySelector('.cat.active');
     return active ? active.getAttribute('data-genre') : '';
