@@ -1,16 +1,15 @@
 const titles = [
     "Shadow City",
-     "The Sniper 1", 
-    
-     "Orbit",
-      "Dark Moon", 
-      "Last Hope",
+    "The Sniper ", 
+    "Orbit",
+    "Dark Moon", 
+    "Last Hope",
     "Extraction", 
-    "Carry On", 
-    "Batman", 
-    "The Secret Service",
+    "Army of Thieves", 
+    "Baby driver", 
+    "I still believe",
     "Eternal Love",
-    "The Sniper 2",
+    "Frankenstein",
      "Fair Play",
       "The Girl Next Door",
     "Titanic", 
@@ -57,10 +56,41 @@ const titles = [
 ];
 
 // إنشاء قائمة الأفلام
+// const movies = [];
+// for (let i = 0; i < titles.length; i++) {
+//     movies.push({ id: i + 1, title: titles[i], video: `movie${i + 1}.mp4`, genres: ["Action","Drama","Comedy","Horror"] });
+// }
+
 const movies = [];
+
 for (let i = 0; i < titles.length; i++) {
-    movies.push({ id: i + 1, title: titles[i], video: `movie${i + 1}.mp4`, genres: ["Action","Drama","Comedy","Horror"] });
+
+    let genres = [];
+
+    if (i === 0 || i === 1) genres.push("Action");
+    if (i === 2 || i === 3) genres.push("Sci-Fi");
+    if (i === 4) {
+        genres.push("Horror");
+        genres.push("Drama");
+    }
+    if (i === 5) {
+        genres.push("Drama");
+        genres.push("Action");
+    }
+    if (i === 6 || i === 7) genres.push("Comedy");
+    if (i === 8 || i === 9) genres.push("Romance");
+    if (i === 10 || i === 11) genres.push("Horror");
+
+    movies.push({
+    id: i + 1,
+    title: titles[i],
+    video: `movie${i + 1}.mp4`,
+    genres: genres
+    });
+
 }
+
+
 
 // تعريف عناصر الـ DOM
 const grid = document.getElementById("moviesGrid");
@@ -169,18 +199,43 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 // -------------------------
 // Categories click handler
 // -------------------------
+// function applyAndRender() {
+//     const active = document.querySelector('.cat.active');
+//     const genre = active ? active.getAttribute('data-genre') : '';
+
+//     let list = movies.slice();
+//     if (genre) list = list.filter(m => m.genres.includes(genre));
+
+//     const value = search.value.toLowerCase().trim();
+//     if (value) list = list.filter(m => m.title.toLowerCase().includes(value));
+
+//     renderMovies(list);
+// }
+
 function applyAndRender() {
-    const active = document.querySelector('.cat.active');
-    const genre = active ? active.getAttribute('data-genre') : '';
+    const activeBtn = document.querySelector(".cat.active");
+    const selectedGenre = activeBtn.getAttribute("data-genre");
 
-    let list = movies.slice();
-    if (genre) list = list.filter(m => m.genres.includes(genre));
+    let filteredMovies = movies;
 
-    const value = search.value.toLowerCase().trim();
-    if (value) list = list.filter(m => m.title.toLowerCase().includes(value));
+    // إذا الزر مش All
+    if (selectedGenre !== "") {
+        filteredMovies = movies.filter(movie =>
+            movie.genres.includes(selectedGenre)
+        );
+    }
 
-    renderMovies(list);
+    // البحث
+    const searchValue = search.value.toLowerCase();
+    if (searchValue) {
+        filteredMovies = filteredMovies.filter(movie =>
+            movie.title.toLowerCase().includes(searchValue)
+        );
+    }
+
+    renderMovies(filteredMovies);
 }
+
 
 const cats = document.querySelectorAll(".cat");
 cats.forEach(c => {
