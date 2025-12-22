@@ -1,6 +1,3 @@
-/* style.css � Premium cinematic UI (English text) */
-/* Modern dark glass look with subtle motion */
-
 :root {
     --panel: rgba(185, 223, 178, 0.04);
     --muted: #fbfbfc;
@@ -382,6 +379,13 @@ html, body {
     background-position: center;
     border: 1px solid rgba(255,255,255,0.03)
 }
+.modal-poster {
+   height: 520px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255,255,255,0.03)
+}
 
 .modal-right {
     display: flex;
@@ -426,3 +430,87 @@ html, body {
 }
 
 
+.modalTitle{
+    
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+.modal-right {
+    display: flex;
+    flex-direction: row; /* لتوزيع العناصر أفقيًا */
+    gap: 12px; /* المسافة بين العناصر */
+    align-items: center; /* لضبط العناصر عموديًا في المنتصف */
+}
+
+/**/
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+ background: radial-gradient(1200px 600px at 10% 10%, #1b1b2f, #0f0f1a);
+
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.login-form input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
+}
+
+.login-footer {
+  margin-top: 20px;
+}
+
+.link {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgb(85, 81, 81);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
