@@ -5,7 +5,7 @@
    --accent1: #270f0f;
     --accent2: #a11818;
     --accent-hover: #ff9f40;
-    --primary: #4a6cff;
+    --primary: #6a0909;
     --dark-input: #111;
     --modal-bg: #0e1125;
     --light-btn: #e0e0e0;
@@ -81,6 +81,24 @@ body {
     align-items: center;
     gap: 12px;
 }
+.home-btn {
+    padding: 10px 18px;
+    border-radius: 14px;
+    border: none;
+    background-color: #a11818; /* نفس sign in */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.home-btn:hover {
+    /* background-color: #ff9f40;  */
+    color: #061018;
+    transform: translateY(-2px);
+}
+
 
 #search {
     width: 280px;
@@ -105,19 +123,40 @@ body {
 }
 
 /* HERO */
+ 
+
 .hero {
-    background-color: var(--panel);
-    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
     border-radius: 16px;
     margin-bottom: 30px;
     text-align: center;
+    color: white;
 }
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("images/a.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px);
+    transform: scale(1.1); /* مهم عشان ما يبين فراغ */
+    z-index: 0;
+}
+
 
 .hero-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {

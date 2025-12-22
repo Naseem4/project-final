@@ -52,7 +52,7 @@ const titles = [
      "Red Notice", 
      "The Life List",
       "Five Feet Apart",
-    "Before Sunrise"
+    "Before Sunrise",
 ];
 
 // إنشاء قائمة الأفلام
@@ -96,89 +96,6 @@ const modalTitle = document.getElementById("modalTitle");
 const videoPlayer = document.getElementById("videoPlayer");
 const closeModal = document.getElementById("closeModal");
 const search = document.getElementById("search");
-// -------------------------
-// AUTH (Sign In)
-// -------------------------
-const signinBtn = document.querySelector(".signin-btn");
-const authModal = document.getElementById("authModal");
-const closeAuth = document.getElementById("closeAuth");
-const authForm = document.getElementById("authForm");
-const authEmail = document.getElementById("authEmail");
-const authPassword = document.getElementById("authPassword");
-const authError = document.getElementById("authError");
-
-function getUser() {
-  const raw = localStorage.getItem("cuUser");
-  return raw ? JSON.parse(raw) : null;
-}
-
-function setUser(user) {
-  localStorage.setItem("cuUser", JSON.stringify(user));
-  updateAuthUI();
-}
-
-function clearUser() {
-  localStorage.removeItem("cuUser");
-  updateAuthUI();
-}
-
-function openAuthModal() {
-  authError.style.display = "none";
-  authError.textContent = "";
-  authPassword.value = "";
-  authModal.style.display = "flex";
-  authEmail.focus();
-}
-
-function closeAuthModal() {
-  authModal.style.display = "none";
-}
-
-function updateAuthUI() {
-  const user = getUser();
-  if (user) {
-    signinBtn.textContent = `Hi, ${user.name} (Logout)`;
-  } else {
-    signinBtn.textContent = "Sign In";
-  }
-}
-
-// click Sign In / Logout
-signinBtn.addEventListener("click", () => {
-  const user = getUser();
-  if (user) {
-    clearUser(); // logout
-  } else {
-    openAuthModal();
-  }
-});
-
-closeAuth.addEventListener("click", closeAuthModal);
-
-// submit login
-authForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = authEmail.value.trim().toLowerCase();
-  const pass = authPassword.value.trim();
-
-  // Demo validation (واضحة للمناقشة)
-  const isValid = (email === "admin@cinema.com" && pass === "1234");
-
-  if (!isValid) {
-    authError.textContent = "Wrong email or password (try demo account).";
-    authError.style.display = "block";
-    return;
-  }
-
-  const name = "Admin";
-  setUser({ email, name });
-  closeAuthModal();
-});
-
-// run once on load
-updateAuthUI();
-
 
 // -------------------------
 // دالة عرض الأفلام
@@ -215,79 +132,9 @@ function paginateMovies() {
 
     const paginated = filteredMovies.slice(start, end);
     renderMovies(paginated);
-    renderPagination();
+    // renderPagination();
 }
 
-
-function renderPagination() {
-    const pageNumbers = document.getElementById("pageNumbers");
-    const paginationInfo = document.getElementById("paginationInfo");
-
-    pageNumbers.innerHTML = "";
-
-    const totalPages = Math.ceil(filteredMovies.length / itemsPerPage);
-
-    const startItem = (currentPage - 1) * itemsPerPage + 1;
-    const endItem = Math.min(currentPage * itemsPerPage, filteredMovies.length);
-
-    paginationInfo.textContent =
-        `${startItem} - ${endItem} of ${filteredMovies.length} movies`;
-
-    if (totalPages <= 1) {
-        const btn = document.createElement("button");
-        btn.textContent = 1;
-        btn.classList.add("active");
-        pageNumbers.appendChild(btn);
-        return;
-    }
-
-    const activeCat = document.querySelector(".cat.active");
-    const isAll = activeCat && activeCat.getAttribute("data-genre") === "";
-
-    // =========================
-    // ALL → 3 أرقام متحركة
-    // =========================
-    if (isAll) {
-        let startPage = Math.max(1, currentPage - 1);
-        let endPage = Math.min(totalPages, startPage + 2);
-
-        if (endPage - startPage < 2) {
-            startPage = Math.max(1, endPage - 2);
-        }
-
-        for (let i = startPage; i <= endPage; i++) {
-            const btn = document.createElement("button");
-            btn.textContent = i;
-
-            if (i === currentPage) btn.classList.add("active");
-
-            btn.addEventListener("click", () => {
-                currentPage = i;
-                paginateMovies();
-            });
-
-            pageNumbers.appendChild(btn);
-        }
-    }
-    // =========================
-    // باقي التصنيفات → كل الصفحات
-    // =========================
-    else {
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement("button");
-            btn.textContent = i;
-
-            if (i === currentPage) btn.classList.add("active");
-
-            btn.addEventListener("click", () => {
-                currentPage = i;
-                paginateMovies();
-            });
-
-            pageNumbers.appendChild(btn);
-        }
-    }
-}
 
 
 
