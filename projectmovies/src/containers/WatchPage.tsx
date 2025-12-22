@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
 import Categories from "../components/Categories";
-import MoviesGrid from "../components/MoviesGrid"; 
+import MoviesGrid from "../components/MoviesGrid";
 import Footer from "../components/Footer";
 import Pagination from "../components/Pagination";
 import CardWatch from "../components/CardWatch";
@@ -47,7 +47,7 @@ const WatchPage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       const data = await fetch(API_URL)
-        .then((res) => res.json());
+          .then((res) => res.json());
       setMovies(data);
       setFilteredMovies(data);
     };
@@ -55,26 +55,34 @@ const WatchPage = () => {
     fetchMovies();
   }, []);
 
-  // ================== FILTER ==================
+  // ========== FILTER ==========
   useEffect(() => {
     let list = [...movies];
 
+    // فلترة حسب النوع (Genre)
     if (activeGenre) {
       list = list.filter((m) => m.genres.includes(activeGenre));
     }
 
+    // فلترة حسب البحث
     if (search.trim()) {
       const q = search.toLowerCase();
+
       list = list.filter(
-        (m) =>
-          m.title.toLowerCase().includes(q) ||
-          m.genres.join(" ").toLowerCase().includes(q)
+          (m) =>
+              m.title.toLowerCase().includes(q) ||
+              m.genres.join(" ").toLowerCase().includes(q)
       );
     }
 
+    // تحديث النتائج
     setFilteredMovies(list);
-    setCurrentPage(1); // مهم: نرجع لأول صفحة
+
+    // رجّع الصفحة لأول صفحة عند أي تغيير
+    setCurrentPage(1);
+
   }, [movies, search, activeGenre]);
+
 
   // ================== PAGINATION LOGIC ==================
   const totalPages = Math.ceil(filteredMovies.length / ITEMS_PER_PAGE);
@@ -99,49 +107,49 @@ const WatchPage = () => {
   };
 
 
-  
+
 
   return (
-    
-    <div className="app">
-            
 
-      <Nav
-        search={search}
-        onSearchChange={handleSearchChange}
-        
-      />
+      <div className="app">
 
-      <Header />
 
-      <Categories
-        activeGenres={activeGenre}
-        onChange={handleGenreChange}
-      />
+        <Nav
+            search={search}
+            onSearchChange={handleSearchChange}
 
-      {/* الأفلام */}
-      <MoviesGrid movies={paginatedMovies} onWatch={handleWatch} />
-
-      {/* الباجينيشن */}
-      {totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPrev={handlePrev}
-          onNext={handleNext}
         />
-      )}
 
-      <Footer />
+        <Header />
 
-      {selectedMovie && (
-        <CardWatch
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
+        <Categories
+            activeGenres={activeGenre}
+            onChange={handleGenreChange}
         />
-      )}
 
-    </div>
+        {/* الأفلام */}
+        <MoviesGrid movies={paginatedMovies} onWatch={handleWatch} />
+
+        {/* الباجينيشن */}
+        {totalPages > 1 && (
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPrev={handlePrev}
+                onNext={handleNext}
+            />
+        )}
+
+        <Footer />
+
+        {selectedMovie && (
+            <CardWatch
+                movie={selectedMovie}
+                onClose={() => setSelectedMovie(null)}
+            />
+        )}
+
+      </div>
   );
 };
 

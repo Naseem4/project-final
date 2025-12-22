@@ -1,7 +1,7 @@
 const Footer = () => {
 return(
     <footer className="footer">
-        © 2025 Elite cinema
+        © 2025 Elite cenama
     </footer>
 )
 
