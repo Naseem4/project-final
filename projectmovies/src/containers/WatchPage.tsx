@@ -20,6 +20,7 @@ export interface Movie {
   desc: string;
 }
 
+
 const WatchPage = () => {
   const [search, setSearch] = useState("");
   function handleSearchChange(value: string) {
@@ -36,14 +37,16 @@ const WatchPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
 
-  // ================== PAGINATION ==================
+
+  // ============= PAGINATION =========
   const ITEMS_PER_PAGE = 12;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // ===== Watch Modal =====
+
+  // ===== Watch Modal ====
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  // ================== FETCH ==================
+  // ========== FETCH ==========
   useEffect(() => {
     const fetchMovies = async () => {
       const data = await fetch(API_URL)
@@ -59,12 +62,11 @@ const WatchPage = () => {
   useEffect(() => {
     let list = [...movies];
 
-    // فلترة حسب النوع (Genre)
+
     if (activeGenre) {
       list = list.filter((m) => m.genres.includes(activeGenre));
     }
 
-    // فلترة حسب البحث
     if (search.trim()) {
       const q = search.toLowerCase();
 
@@ -106,9 +108,6 @@ const WatchPage = () => {
     setSelectedMovie(movie);
   };
 
-
-
-
   return (
 
       <div className="app">
@@ -139,9 +138,7 @@ const WatchPage = () => {
                 onNext={handleNext}
             />
         )}
-
         <Footer />
-
         {selectedMovie && (
             <CardWatch
                 movie={selectedMovie}
@@ -152,5 +149,4 @@ const WatchPage = () => {
       </div>
   );
 };
-
 export default WatchPage;
