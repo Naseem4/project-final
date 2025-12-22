@@ -46,8 +46,8 @@ body {
 .logo {
     width: 40px;
     height: 40px;
-    background-color: var(--accent1);
     border-radius: 8px;
+    gap: 10px;
     
 }
 .logo-img{ 
@@ -55,6 +55,8 @@ body {
     height: 50;
     margin-bottom: 18px;
     object-fit: contain;
+    border: 10px;
+    
 
 }
 
@@ -113,14 +115,7 @@ body {
     color: #888;
 }
 
-.signin-btn {
-    padding: 10px 18px;
-    border-radius: 14px;
-    border: none;
-    background-color: #a11818;
-    color: white;
-    font-weight: bold;
-}
+
 
 /* HERO */
  
@@ -141,7 +136,7 @@ body {
     inset: 0;
     background-image:
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url("images/a.jpg");
+       url("/images/movie6.jpg");
     background-size: cover;
     background-position: center;
     filter: blur(6px);
@@ -205,6 +200,8 @@ body {
 }
 
 
+
+
 .movie-card {
     background-color: var(--panel);
     padding: 10px;
@@ -249,11 +246,17 @@ body {
     padding: 15px 10px;
     font-weight: 700;
     border: none;
+    cursor: pointer;
 }
 
 
 .movie-actions button.watch:hover {
     background-color: #e60000; /* أحمر غامق عند المرور */
+    opacity: 0.85;
+}
+
+.movie-actions button.watch:active {
+    transform: scale(0.96);
 }
 
 
