@@ -1,4 +1,4 @@
-import type {Movie}  from "../containers/WatchPage";
+import type {Movie}  from "../../../projectmovies/src/containers/WatchPage";
 
 type Props = {
   movies: Movie[];

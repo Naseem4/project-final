@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 type Props = {
   search: string;
   onSearchChange: (v: string) => void;
@@ -19,9 +21,9 @@ const Nav = ({search , onSearchChange }:Props) => {
       </div>
 
       <div className="nav-actions">
-        <input type="text" id="searchwatch" placeholder="Search movies, genres or keyword..." value={search} onChange={(e) => onSearchChange(e.target.value)} />
+        <input type="text" id="search" placeholder="Search movies, genres or keyword..." value={search} onChange={(e) => onSearchChange(e.target.value)} />
 
-        <button className="home-btn" type="button">Home Page</button>
+        <NavLink to ="/Home" className="home-btn" type="button">Home Page</NavLink>
 
         
       </div>

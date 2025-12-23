@@ -1,4 +1,4 @@
-:root {
+.rootwatch {
     /* --bg: #05060a; */
     --panel: rgba(255,255,255,0.05);
     --muted: #97a6bf;
@@ -17,7 +17,7 @@
     box-sizing: border-box;
 }
 
-body {
+.bodywatch {
     margin: 0;
     background-color: var(--bg);
     color: #eaf3ff;
@@ -69,7 +69,7 @@ body {
     color: var(--muted);
 }
 
-.search {
+.searchwatch {
     padding: 10px 12px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.1);

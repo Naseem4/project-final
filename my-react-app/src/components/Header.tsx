@@ -6,9 +6,11 @@ interface HeaderProps {
 }
 
 const Header = ({ search, onSearchChange }: HeaderProps) => {
+
   const user = localStorage.getItem("user");
   const parsedUser = user ? JSON.parse(user) : null;
 
+  
   const handleLogout = () => {
     localStorage.removeItem("user");
     window.location.reload();
@@ -16,15 +18,17 @@ const Header = ({ search, onSearchChange }: HeaderProps) => {
 
   return (
     <nav className="nav">
+     
       <div className="brand">
-        <div><img src=""/></div>
         <div>
           <div className="brand-title">CINEMA UNIVERSE</div>
           <div className="brand-sub">Premium Movie Experience</div>
         </div>
       </div>
 
+  
       <div className="nav-actions">
+      
         <input
           className="search"
           placeholder="Search movies..."
@@ -32,8 +36,18 @@ const Header = ({ search, onSearchChange }: HeaderProps) => {
           onChange={(e) => onSearchChange(e.target.value)}
         />
 
+     
+        <NavLink to="/WatchPage" className="btn ghost">
+          Watch
+        </NavLink>
+
+      
         {parsedUser?.isLoggedIn ? (
-          <div className="user-avatar" onClick={handleLogout}>
+          <div
+            className="user-avatar"
+            title="Logout"
+            onClick={handleLogout}
+          >
             {parsedUser.email.charAt(0).toUpperCase()}
           </div>
         ) : (

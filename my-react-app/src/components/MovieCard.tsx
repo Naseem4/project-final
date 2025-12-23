@@ -1,4 +1,4 @@
-// MovieCard.tsx
+import { NavLink } from "react-router-dom";
 import { Movie } from "../containers/Home";
 
 interface Props {
@@ -19,7 +19,7 @@ const MovieCard = ({ movie, onAction }: Props) => {
         <span>{movie.length} min</span>
       </div>
       <button className="btn" onClick={() => onAction(movie, "details")}>Details</button>
-      <button className="btn primary" onClick={() => onAction(movie, "book")}>Book</button>
+      <NavLink to="/BookingContainer" className="btn primary" onClick={() => onAction(movie, "book")}>Book</NavLink>
     </article>
   );
 };

@@ -63,7 +63,7 @@ const Home = () => {
         movies={filteredMovies}
         onAction={(movie, action) => {
           if (action === "details") setSelectedMovie(movie);
-          if (action === "book") alert('Booking ${movie.title}');
+       
         }}
       />
       {selectedMovie && (
