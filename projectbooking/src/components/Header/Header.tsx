@@ -1,4 +1,4 @@
-import logo from "C:/Users/USER/projectbooking/projectlogo.png";
+import logo from "../projectlogo.png";
 
 type Props = {
     showKey: string | null;
