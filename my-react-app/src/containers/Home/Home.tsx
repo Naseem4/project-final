@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Categories from "../components/Categories";
-import Controls from "../components/Controls";
-import MoviesGrid from "../components/MovieGrid";
-import Modal from "../components/Modal";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Hero from "../../components/Hero";
+import Categories from "../../components/Categories";
+import Controls from "../../components/Controls";
+import MoviesGrid from "../../components/MovieGrid";
+import Modal from "../../components/Modal";
+import Footer from "../../components/Footer";
+import "./Home.css";
 
 export interface Movie {
   id: number;
@@ -51,7 +52,7 @@ const Home = () => {
 
   return (
     <div className="app">
-      <Header search={search} onSearchChange={setSearch} />
+      <Header search ={search} onSearchChange={setSearch} />
       <Hero />
       <Categories active={activeGenre} onChange={setActiveGenre} />
       <Controls

@@ -1,41 +1,77 @@
-import { Movie } from "../containers/Home";
-interface Props { movie: Movie; onClose: () => void; }
+import { NavLink } from "react-router-dom";
+import { Movie } from "../containers/Home/Home";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+interface Props {
+  movie: Movie;
+  onClose: () => void;
+}
+
 const Modal = ({ movie, onClose }: Props) => {
+  const [showTrailer, setShowTrailer] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        <button className="close" onClick={onClose}>×</button>
+   <div className="modal-backdrop" onClick={onClose}>
+  <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+    <button className="close" onClick={onClose}>×</button>
 
-        <img
-          src={movie.poster}
-          alt={movie.title}
-          className="modal-poster"
-        />
+    {/* grid أساسي */}
+    <div className="modal-grid">
 
+      {/* اليسار: البوستر */}
+      <div
+        className="big-poster"
+        style={{ backgroundImage: `url(${movie.poster})` }}
+      />
 
-        <div className="modal-right">
-         <h2 id="modalTitle">Title</h2>
-          <p id="modalGenres" className="muted"></p>
-          <p id="modalDesc"></p>
-           <div className="meta-row">
-            <div>Length: <strong id="modalLength"></strong> min</div>
-            <div>Rating: <strong id="modalRating"></strong></div>
-           <div>Language: <strong id="modalLang"></strong></div>
-           </div>
+      {/* اليمين */}
+      <div className="modal-right">
+
+        {/* معلومات الفيلم */}
+        <div className="modal-info">
+          <h2>{movie.title}</h2>
+          <p className="muted">{movie.genres}</p>
+          <p>{movie.desc}</p>
+
+          <div className="meta-row">
+            <div>Length: <strong>{movie.length}</strong> min</div>
+            <div>Rating: <strong>{movie.rating}</strong></div>
+            <div>Language: <strong>{movie.lang}</strong></div>
+          </div>
+
           <div className="modal-actions">
-           <button className="btn primary" id="playTrailer">Play Trailer</button>
-            <button className="btn" id="openBook">Start Booking</button>
-            </div>
-                        <div className="trailer" id="trailerWrap" hidden>
-                            <iframe id="trailerIframe" src=""  title="Trailer"></iframe>
-                        </div>
-                    </div>
+            <button
+              className="btn primary"
+              onClick={() => setShowTrailer(prev => !prev)}
+            >
+              {showTrailer ? "Hide Trailer" : "Play Trailer"}
+            </button>
 
+            <NavLink to="/BookingContainer" className="btn ghost">
+              Start Booking
+            </NavLink>
+          </div>
+        </div>
+
+        {/* التريلر تحت */}
+        {showTrailer && (
+          <div className="trailer">
+            <iframe
+              src={movie.trailer}
+              title="Trailer"
+              allowFullScreen
+            />
+          </div>
+        )}
 
       </div>
-
-
     </div>
+  </div>
+</div>
+
   );
 };
+
 export default Modal;

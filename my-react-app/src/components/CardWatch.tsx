@@ -1,20 +1,20 @@
-import type{ Movie } from "../containers/WatchPage";
+import type { Movie as MovieModal } from "../containers/WatchPage/WatchPage";
 
-type Props = {
-  movie: Movie | null;
+type CardWatchProps = {
+  movie: MovieModal | null;
   onClose: () => void;
 };
 
-const CardWatch = ({ movie, onClose }: Props) => {
+const CardWatch = ({ movie, onClose }: CardWatchProps) => {
   if (!movie) return null;
 
   return (
-    <div className="modal-backdrop">
-      <div className="modal-card">
-        <button className="close" onClick={onClose}>×</button>
-
+    <div className="cinema-modal-backdrop">
+      <div className="cinema-modal-card">
+        <button className="cinema-modal-close" onClick={onClose}>
+          ×
+        </button>
         <h2>{movie.title}</h2>
-
         <video controls>
           <source src={movie.trailer} type="video/mp4" />
           Your browser does not support video.

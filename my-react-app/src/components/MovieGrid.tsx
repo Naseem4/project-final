@@ -1,6 +1,6 @@
 // MoviesGrid.tsx
 import MovieCard from "./MovieCard";
-import { Movie } from "../containers/Home";
+import { Movie } from "../containers/Home/Home";
 
 interface Props {
   movies: Movie[];

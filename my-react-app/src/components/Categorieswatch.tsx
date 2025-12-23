@@ -1,22 +1,25 @@
 const GENRES = ["", "Action", "Drama", "Comedy", "Sci-Fi", "Horror", "Romance"];
 
-type Props = {
+type CategoriesProps = {
   activeGenres: string;
   onChange: (g: string) => void;
 };
 
-const Categories=({ activeGenres, onChange }: Props)=> {
+const Categories = ({ activeGenres, onChange }: CategoriesProps) => {
   return (
-    <section className="categories" aria-label="Categories">
+    <section className="cinema-categories" aria-label="Categories">
       {GENRES.map((g) => (
         <button
-         key={g || "all"} className={`cat ${activeGenres === g ? "active" : ""}`} data-genre={g} onClick={() => onChange(g)}> {g === "" ? "All" : g}
+          key={g || "all"}
+          className={'cinema-cat ${activeGenres === g ? "cinema-cat-active" : ""}'}
+          data-genre={g}
+          onClick={() => onChange(g)}
+        >
+          {g === "" ? "All" : g}
         </button>
       ))}
     </section>
   );
-}
+};
 
 export default Categories;
-
-

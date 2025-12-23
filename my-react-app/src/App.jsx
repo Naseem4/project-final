@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./containers/Home";
+import Home from "./containers/Home/Home";
 import Login from "./containers/Login";
-import WatchPage from "./containers/WatchPage";
-import BookingContainer from "./containers/BookingContainer";
+import WatchPage from "./containers/WatchPage/WatchPage";
+import BookingContainer from "./containers/BookingContainer/BookingContainer";
 
 function App() {
   return (

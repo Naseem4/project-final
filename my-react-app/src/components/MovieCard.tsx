@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Movie } from "../containers/Home";
+import { Movie } from "../containers/Home/Home";
 
 interface Props {
   movie: Movie;

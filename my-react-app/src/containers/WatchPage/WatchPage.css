@@ -1,0 +1,200 @@
+/* ================== APP ================== */
+.cinema-app {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background-color: #071018;
+}
+
+/* ================== NAV ================== */
+.cinema-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cinema-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cinema-logo {
+  width: 40px;
+  height: 40px;
+  background-color: #270f0f;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cinema-logo-img {
+  width: 50px;
+  object-fit: contain;
+}
+
+.cinema-brand-title {
+  font-weight: bold;
+}
+
+.cinema-brand-sub {
+  font-size: 12px;
+  color: #97a6bf;
+}
+
+.cinema-nav-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cinema-nav-actions input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.cinema-home-btn {
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: none;
+  background-color: #a11818;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ================== HERO ================== */
+.cinema-hero {
+  padding: 60px 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #270f0f, #a11818);
+}
+
+/* ================== CATEGORIES ================== */
+.cinema-categories {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.cinema-cat {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #97a6bf;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.cinema-cat-active {
+  background: linear-gradient(90deg, #270f0f, #a11818);
+  color: #ffffff;
+}
+
+/* ================== MOVIES GRID ================== */
+.cinema-movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cinema-movie-card {
+  width: calc(25% - 20px);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.cinema-poster img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.cinema-watch-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #270f0f, #a11818);
+  border: none;
+  padding: 10px;
+  border-radius: 14px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================== PAGINATION ================== */
+.cinema-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.cinema-pagination button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.cinema-pagination-info {
+  color: #97a6bf;
+}
+
+/* ================== MODAL ================== */
+.cinema-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.cinema-modal-card {
+  background-color: #0e1125;
+  padding: 20px;
+  border-radius: 14px;
+  width: 80%;
+  max-width: 700px;
+}
+
+.cinema-modal-close {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================== FOOTER ================== */
+.cinema-footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #97a6bf;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+  .cinema-movie-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 500px) {
+  .cinema-movie-card {
+    width: 100%;
+  }
+}   

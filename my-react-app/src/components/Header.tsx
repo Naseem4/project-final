@@ -21,7 +21,7 @@ const Header = ({ search, onSearchChange }: HeaderProps) => {
      
       <div className="brand">
         <div>
-          <div className="brand-title">CINEMA UNIVERSE</div>
+          <div className="brand-title">ELITE-CINEMA</div>
           <div className="brand-sub">Premium Movie Experience</div>
         </div>
       </div>

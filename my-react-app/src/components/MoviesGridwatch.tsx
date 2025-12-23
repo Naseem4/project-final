@@ -1,20 +1,19 @@
-import type {Movie}  from "../../../projectmovies/src/containers/WatchPage";
+import type { Movie } from "../../../projectmovies/src/containers/WatchPage";
 
-type Props = {
+type MoviesGridProps = {
   movies: Movie[];
   onWatch: (movie: Movie) => void;
 };
 
-function MoviesGrid({ movies, onWatch }: Props) {
+function MoviesGrid({ movies, onWatch }: MoviesGridProps) {
   return (
-    <main className="movies-grid" id="moviesGrid">
+    <main className="cinema-movies-grid" id="moviesGrid">
       {movies.length === 0 && <div>No movies found.</div>}
 
       {movies.map((movie) => (
-        <div className="movie-card" key={movie.id}>
-          <div className="poster">
+        <div className="cinema-movie-card" key={movie.id}>
+          <div className="cinema-poster">
             <img src={movie.poster} alt={movie.title} loading="lazy" />
-            
           </div>
 
           <div className="movie-title">{movie.title}</div>
@@ -26,7 +25,7 @@ function MoviesGrid({ movies, onWatch }: Props) {
           </div>
 
           <div className="movie-actions">
-            <button className="watch" onClick={() => onWatch(movie)}>
+            <button className="cinema-watch-btn" onClick={() => onWatch(movie)}>
               Watch
             </button>
           </div>

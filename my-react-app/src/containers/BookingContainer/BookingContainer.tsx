@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";     
 
-import Header from "../components/Headerbook/Header";
-import BookingForm from "../components/BookingForm/BookingForm";
-import SeatsPage from "../components/Seats/SeatsPage";
-import SummaryModal from "../components/SummaryModal/SummaryModal";
+import Header from "../../components/Headerbook/Header";
+import BookingForm from "../../components/BookingForm/BookingForm";
+import SeatsPage from "../../components/Seats/SeatsPage";
+import SummaryModal from "../../components/SummaryModal/SummaryModal";
+import"./BookingContainer.css";
 
 const BookingContainer = () => {
     const [step, setStep] = useState<1 | 2>(1);
