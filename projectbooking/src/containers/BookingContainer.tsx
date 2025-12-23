@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import Header from "C:/Users/USER/projectbooking/src/components/Header/Header.tsx";
-import BookingForm from "C:/Users/USER/projectbooking/src/components/BookingForm/BookingForm.tsx";
-import SeatsPage from "C:/Users/USER/projectbooking/src/components/Seats/SeatsPage.tsx";
-import SummaryModal from "C:/Users/USER/projectbooking/src/components/SummaryModal/SummaryModal.tsx";
+import Header from "../components/Header/Header.tsx";
+import BookingForm from "../components/BookingForm/BookingForm.tsx";
+import SeatsPage from "../components/Seats/SeatsPage.tsx";
+import SummaryModal from "../components/SummaryModal/SummaryModal.tsx";
 
 const BookingContainer = () => {
     const [step, setStep] = useState<1 | 2>(1);
