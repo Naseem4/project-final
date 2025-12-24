@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+// Header.tsx
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   search: string;
@@ -6,19 +7,37 @@ interface HeaderProps {
 }
 
 const Header = ({ search, onSearchChange }: HeaderProps) => {
-
+  const navigate = useNavigate();
   const user = localStorage.getItem("user");
   const parsedUser = user ? JSON.parse(user) : null;
 
-  
+  const isLoggedIn = parsedUser?.isLoggedIn === true;
+
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
     window.location.reload();
+  };
+
+  const iconuser = () => {
+    if (!parsedUser) return "";
+    if (parsedUser.name) return parsedUser.name.charAt(0).toUpperCase();
+    if (parsedUser.email) return parsedUser.email.charAt(0).toUpperCase();
+    return "";
+  };
+
+  // عشان ما يدخل بدون تسجيل دخول
+  const handleWatchClick = () => {
+    if (!isLoggedIn) {
+      alert("You must be logged in to watch free movies");
+      navigate("/Login");
+    } else {
+      navigate("/WatchPage");
+    }
   };
 
   return (
     <nav className="nav">
-     
       <div className="brand">
         <div>
           <div className="brand-title">ELITE-CINEMA</div>
@@ -26,9 +45,7 @@ const Header = ({ search, onSearchChange }: HeaderProps) => {
         </div>
       </div>
 
-  
       <div className="nav-actions">
-      
         <input
           className="search"
           placeholder="Search movies..."
@@ -36,19 +53,17 @@ const Header = ({ search, onSearchChange }: HeaderProps) => {
           onChange={(e) => onSearchChange(e.target.value)}
         />
 
-     
-        <NavLink to="/WatchPage" className="btn ghost">
+        <button className="btn ghost" onClick={handleWatchClick}>
           Watch
-        </NavLink>
+        </button>
 
-      
-        {parsedUser?.isLoggedIn ? (
+        {isLoggedIn ? (
           <div
             className="user-avatar"
             title="Logout"
             onClick={handleLogout}
           >
-            {parsedUser.email.charAt(0).toUpperCase()}
+            {iconuser()}
           </div>
         ) : (
           <NavLink to="/Login" className="btn subtle">

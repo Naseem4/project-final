@@ -1,25 +1,20 @@
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+interface FormData {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit } = useForm<FormData>();
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); // للرجوع عالهوم
+  const onSubmit = (data: FormData) => {
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    localStorage.setItem("user", JSON.stringify(data));
+    localStorage.setItem("isLoggedIn", "true");
 
-    // 1️⃣ حفظ البيانات بالـ localStorage
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        email,
-        isLoggedIn: true,
-      })
-    );
-
-    // 2️⃣ الرجوع للصفحة الرئيسية
     navigate("/");
   };
 
@@ -29,29 +24,24 @@ const Login = () => {
         <h1 className="brand-title">ELITE CINEMA</h1>
         <p className="muted">Sign in to continue</p>
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit(onSubmit)} className="login-form">
           <input
             type="email"
             placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            {...register("email", { required: true })}
           />
 
           <input
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            {...register("password", { required: true })}
           />
 
           <button className="btn primary" type="submit">
             Sign In
           </button>
         </form>
-
-        <div className="login-footer">
+         <div className="login-footer">
           <span className="muted">Back to</span>{" "}
           <NavLink to="/" className="link">
             Home

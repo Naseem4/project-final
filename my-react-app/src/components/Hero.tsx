@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 const Hero = () => {
   return (
     <header className="hero">
@@ -18,9 +19,9 @@ const Hero = () => {
         </div>
 
         <div className="hero-ctas">
-          <button className="btn primary" id="bookNow">
+          <NavLink to="/BookingContainer" className="btn primary" id="bookNow">
             Book Tickets
-          </button>
+          </NavLink>
           <button className="btn ghost" id="watchPromo">
             Watch Trailer
           </button>
